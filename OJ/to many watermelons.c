@@ -16,7 +16,7 @@ int main(){
     int mid=0;
     for(int j=0;j<n;j++){
         for(k;k<=n;k++){
-            if(arr[k]==list[j]){
+            if(k!=n && arr[k]==list[j]){
                 ans[x]=k+1-mid;
                 mid=k+1;
                 break;
