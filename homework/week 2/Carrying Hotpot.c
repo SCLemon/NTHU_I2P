@@ -1,9 +1,8 @@
 #include <stdio.h>
 int main(){
-    double x,y,mult;
-    int z;
-    scanf("%lf %lf %d",&x,&y,&z);
-    mult=x*y;
-    printf("%.*lf",z,mult);
+    double x,y;
+    int pre;
+    scanf("%lf %lf %d",&x,&y,&pre);
+    printf("%.*lf",pre,x*y);
     return 0;
 }

@@ -1,36 +1,33 @@
 #include <stdio.h>
 int main(){
-    int times,n,num;
-    scanf("%d",&times);
-    int size;
-    for(int t=0;t<times;t++){
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        int n;
         scanf("%d",&n);
         int arr[n];
         for(int i=0;i<n;i++){
-            scanf("%d",&num);
-            arr[i]=num;
+            scanf("%d",&arr[i]);
         }
-        size=sizeof (arr)/sizeof (arr[0]);
-        for(int n=0;n<size-1;n++){
-            for(int m=n+1;m<size;m++){
+        for(int j=0;j<n-1;j++){
+            for(int k=j+1;k<n;k++){
                 int mid;
-                if(arr[n]>arr[m]){
-                    mid=arr[n];
-                    arr[n]=arr[m];
-                    arr[m]=mid;
+                if(arr[j]>arr[k]){
+                    mid=arr[j];
+                    arr[j]=arr[k];
+                    arr[k]=mid;
                 }
             }
         }
-        for(int j=0;j<size;j++){
-            if(j!=size-1){
-                printf("%d ",arr[j]);
+        for(int l=0;l<n;l++){
+            if(l==n-1){
+                printf("%d",arr[l]);
             }
             else{
-                printf("%d",arr[j]);
+                printf("%d ",arr[l]);
             }
         }
         printf("\n");
     }
-
     return 0;
 }

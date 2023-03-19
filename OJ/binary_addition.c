@@ -38,9 +38,3 @@ int main(){
     printf(" %d",plus);
     return 0;
 }
-
-/*
- *
- *
- *
- */
