@@ -5,7 +5,6 @@ int out[200001];
 int main(){
     int n, m;
     scanf("%d %d", &n, &m);
-    // 存取命令
     for(int i = 0; i < m; i++){
         scanf("%d", &req[i]);
     }
