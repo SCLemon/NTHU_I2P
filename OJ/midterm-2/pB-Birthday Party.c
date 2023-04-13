@@ -1,15 +1,12 @@
 #include <stdio.h>
-// It is the smallest positive integer that is a multiple of two or more integers.
-// a * b = gcd(a, b) * lcm(a, b)
-#define lcm(a, b) (a / gcd(a, b) * b)
 
 long long gcd(long long n, long long k);
-
+long long lcm(long long a,long long b);
 int main() {
-    int T;
+    int t;
     long long n, r, b, y, R, B, Y, d;
-    scanf("%d", &T);
-    while (T--) {
+    scanf("%d", &t);
+    while (t--) {
         scanf("%lld %lld %lld %lld", &n, &r, &b, &y);
         R = gcd(n, r);
         B = gcd(n, b);
@@ -33,4 +30,9 @@ long long gcd(long long n, long long k) {
         k = tmp;
     }
     return n;
+}
+// It is the smallest positive integer that is a multiple of two or more integers.
+long long lcm(long long a,long long b){
+    // a * b = gcd(a, b) * lcm(a, b) -> but we should first / , then *b
+    return (a / gcd(a, b) * b);
 }

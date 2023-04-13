@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 int main(){
+    // 3/5
     char sub[5];
     int t,max=0;
     scanf("%s",sub);
