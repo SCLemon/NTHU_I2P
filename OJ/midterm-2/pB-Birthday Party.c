@@ -23,13 +23,8 @@ int main() {
  because that will give us the maximum number of balls that can be colored with that color
  without violating the condition.
  */
-long long gcd(long long n, long long k) {
-    while (k) { // k!=0
-        long long tmp = n % k;
-        n = k;
-        k = tmp;
-    }
-    return n;
+long long gcd(long long a, long long b) {
+    return b==0?a:gcd(b,a%b);
 }
 // It is the smallest positive integer that is a multiple of two or more integers.
 long long lcm(long long a,long long b){
