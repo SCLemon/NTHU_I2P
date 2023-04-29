@@ -1,26 +1,22 @@
 #include <stdio.h>
-int n;
-int cal(int arr[]);
-int gcd(int a,int b);
+int gcd(int a,int b){
+    return b==0?a:gcd(b,a%b);
+}
 int main(){
-    scanf("%d",&n);
-    int arr[n];
-    for(int i=0;i<n;i++) scanf("%d",&arr[i]);
-    printf("%d",cal(arr));
-    return 0;
-}
-int cal(int arr[]){
-    int max;
-    for(int j=0;j<n-1;j++){
-        for(int k=j+1;k<n;k++){
-            int x = gcd(arr[j],arr[k]);
-            if(x>max) max=x;
+    int t;
+    scanf("%d",&t);
+    while (t--){
+        int n,arr[1001];
+        scanf("%d",&n);
+        for(int i=0;i<n;i++) scanf("%d",&arr[i]);
+        int max=0;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                int gd = gcd(arr[i],arr[j]);
+                if(gd>max) max=gd;
+            }
         }
+        printf("%d\n",max);
     }
-    return max;
-}
-// 輾轉相除法-3
-int gcd(int a, int b){
-    if(b==0) return a;
-    return gcd(b,a%b);
+    return 0;
 }

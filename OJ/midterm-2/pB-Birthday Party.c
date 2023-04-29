@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-long long gcd(long long n, long long k);
+long long gcd(long long a, long long b);
 long long lcm(long long a,long long b);
 int main() {
     int t;
