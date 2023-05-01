@@ -1,29 +1,28 @@
 #include <stdio.h>
 int main(){
-    int num;
-    scanf("%d",&num);
-    int index[num],eat[num],ans[num];
-    for(int i=0;i<num;i++){
-        scanf("%d",&index[i]);
-    }
-    for(int i=0;i<num;i++){
-        scanf("%d",&eat[i]);
-    }
+    int n;
+    scanf("%d",&n);
+    int arr[n],list[n],ans[n];
+    for(int i =0;i<n;i++) scanf("%d",&arr[i]);
+    for(int i =0;i<n;i++) scanf("%d",&list[i]);
+    int x=0;
     int mid=0;
-    int flag=1;
-    for(int j=0;j<num;j++){
-        for(int k=mid;k<num;k++){
-            if(eat[j]==index[k]){
+    for(int j=0;j<n;j++){
+        for(int k=mid;k<=n;k++){
+            if(k!=n && arr[k]==list[j]){
+                ans[x]=k+1-mid;
                 mid=k+1;
-                flag=0;
-                printf("%d ",k+1-mid);
                 break;
             }
+            else{
+                ans[x]=0;
+            }
         }
-        if(flag){
-            printf("0 ");
-        }
-        flag=1;
+        x++;
+    }
+    for(int y=0; y<n ;y++){
+        if(y==n-1) printf("%d",ans[y]);
+        else printf("%d ",ans[y]);
     }
     return 0;
 }
