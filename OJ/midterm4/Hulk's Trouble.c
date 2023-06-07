@@ -1,52 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
-int n;
 int arr[100001];
-int cmp(const void *a , const void *b){
-    int *aa = (int*)a;
-    int *bb = (int*)b;
-    return (*aa)-(*bb);
+int cmp(const void* a, const void *b){
+    return *(int*)a-*(int*)b;
 }
-int lower_bound(int arr[], int N, int X)
-{
+int lower(int *arr,int L,int R,int x){
     int mid;
-    int low = 0;
-    int high = N;
-
-    while (low < high) {
-        mid = low + (high - low) / 2;
-        if (X <= arr[mid]) high = mid;
-        else low = mid + 1;
-
+    while (L<R){
+        mid =(L+R)/2;
+        if(arr[mid]>=x) R=mid;
+        else L=mid+1;
     }
-    if(low < N && arr[low] < X) low++;
-    return low;
+    return R;
 }
-int upper_bound(int arr[], int N, int X) {
+int upper(int *arr,int L,int R,int x){
     int mid;
-    int low = 0;
-    int high = N;
-    while (low < high) {
-        mid = low + (high - low) / 2;
-        if (X >= arr[mid]) low = mid + 1;
-        else high = mid;
+    while (L<R){
+        mid =(L+R)/2;
+        if(arr[mid]>x) R=mid;
+        else L=mid+1;
     }
-    if (low < N && arr[low] <= X) low++;
-    return low;
+    return R;
 }
-
 int main(){
+    int n;
     scanf("%d",&n);
     for(int i=0;i<n;i++) scanf("%d",&arr[i]);
-    qsort(arr,n,sizeof(arr[0]),cmp);
+    qsort(arr,n,sizeof (arr[0]),cmp);
     int q;
     scanf("%d",&q);
     while (q--){
         int x;
         scanf("%d",&x);
-        int L = lower_bound(arr,n,x);
-        int H = upper_bound(arr,n,x);
+        int L = lower(arr,0,n,x);
+        int H = upper(arr,0,n,x);
         printf("%d\n",H-L);
     }
+    return 0;
 }
-
