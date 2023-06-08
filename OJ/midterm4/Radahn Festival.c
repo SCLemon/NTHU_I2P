@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct _Seqment{
+typedef struct _Segment{
     double l,r;
 } Segment;
 
@@ -27,7 +27,7 @@ int main(){
         tot+=s[0].r-s[0].l;
         for(int i=1;i<Q;i++){
             if(s[i].r<=R && s[i].l >= L){} // 完全重疊
-            else if(s[i].r>R && s[i].l<=R){ // 部分重疊
+            else if(s[i].r>R && s[i].l<R){ // 部分重疊
                 tot+=s[i].r-R;
                 R = s[i].r;
                 L = s[i].l;
