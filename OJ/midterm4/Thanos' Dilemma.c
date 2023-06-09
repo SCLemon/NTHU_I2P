@@ -4,7 +4,6 @@
 typedef struct _Matrix{
     long long int m[3][3];
 } Matrix;
-
 /*
  | 1 2 1 |
  | 1 0 0 |
@@ -21,16 +20,24 @@ Matrix mul(Matrix a, Matrix b){
     Matrix ans;
     memset(ans.m,0,sizeof(ans.m));
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
-        for(int k=0;k<3;k++) ans.m[i][j] += (a.m[i][k] * b.m[k][j])%MOD;
-        ans.m[i][j] %= MOD;
-    }
+            for(int k=0;k<3;k++) ans.m[i][j] += (a.m[i][k] * b.m[k][j])%MOD;
+            ans.m[i][j] %= MOD;
+        }
     return ans;
 }
 Matrix fpw(long long int x){
+    /*
+     fpw
+     power =0 return 1;
+     power =1 return base;
+     product = fpw(power/2);
+     power%2==1 return (base*product*product);
+     return product*product;
+    */
     if(x==1) return constant();
-    Matrix tmp = fpw(x/2);
-    if(x%2 == 0) return mul(tmp,tmp);
-    return mul(mul(tmp,tmp),constant());
+    Matrix product = fpw(x/2);
+    if(x%2==1) return mul(mul(product,product),constant());
+    return mul(product,product);
 }
 int main(){
     int t;

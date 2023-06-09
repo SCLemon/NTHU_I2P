@@ -17,7 +17,7 @@ int main(){
     }
     qsort(ptrs,n,sizeof (char*),cmp);
     for(int i=0;i<n-1;i++){
-        // char * strstr(char * str1, const char * str2); --> 找尋前者是否為後者之子字串
+        // char * strstr(char * str1, const char * str2); --> 找尋後者是否為前者之子字串
         if(strstr(ptrs[i+1],ptrs[i])==NULL){
             flag=0;
             break;
